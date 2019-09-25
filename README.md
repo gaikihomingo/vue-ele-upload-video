@@ -82,60 +82,60 @@ export default {
 ## Props 参数
 
 ```js
-props: {
-  // 值
-  value: {
-    type: String
+Props: {
+  // value
+  Value: {
+    Type: String
   },
-  // 上传地址
-  action: {
-    type: String,
-    required: true
+  // Upload address
+  Action: {
+    Type: String,
+    Required: true
   },
-  // 响应处理函数
+  // response handler
   responseFn: Function,
-  // 文件大小限制(Mb)
+  // file size limit (Mb)
   fileSize: {
-    type: Number
+    Type: Number
   },
-  // 显示宽度(px)
-  width: {
-    type: Number,
-    default: 360
+  // display width (px)
+  Width: {
+    Type: Number,
+    Default: 360
   },
-  // 显示高度(默认auto)
-  height: {
-    type: Number
+  // display height (default auto)
+  Height: {
+    Type: Number
   },
-  // 是否显示提示
+  // Is the prompt displayed?
   isShowTip: {
-    type: Boolean,
-    default: true
+    Type: Boolean,
+    Default: true
   },
-  // 文件类型
+  // file type
   fileType: {
-    type: Array
+    Type: Array
   },
-    // 设置上传的请求头部(同官网)
-  headers: Object,
-  // 支持发送 cookie 凭证信息 (同官网)
+    / / Set the request header for uploading (same official website)
+  Headers: Object,
+  / / Support to send cookie credential information (same official website)
   withCredentials: {
-    type: Boolean,
-    default: false
+    Type: Boolean,
+    Default: false
   },
-  // 上传时附带的额外参数(同官网)
-  data: {
-    type: Object
+  // Additional parameters attached when uploading (same official website)
+  Data: {
+    Type: Object
   },
-  // 上传的文件字段名 (同官网)
-  name: {
-    type: String,
-    default: 'file'
+  // Uploaded file field name (same official website)
+  Name: {
+    Type: String,
+    Default: 'file'
   },
-    // 覆盖默认的上传行为，可以自定义上传的实现 (同官网)
+    / / Override the default upload behavior, you can customize the implementation of the upload (same official website)
   httpRequest: Function,
-  // 接受上传的文件类型（thumbnail-mode 模式下此参数无效）(同官网)
-  accept: String
+  // Accept the uploaded file type (this parameter is invalid in thumbnail-mode mode) (same official website)
+  Accept: String
 }
 ```
 
