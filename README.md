@@ -1,38 +1,39 @@
-# vue-ele-upload-video | 使得视频上传更加容易
+# vue-ele-upload-video | Make video uploading easier
 
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg)](https://opensource.org/licenses/mit-license.php)
 [![npm](https://img.shields.io/npm/v/vue-ele-upload-video.svg)](https://www.npmjs.com/package/vue-ele-upload-video)
 [![size](https://img.shields.io/bundlephobia/minzip/vue-ele-upload-video.svg)](https://www.npmjs.com/package/vue-ele-upload-video)
 [![download](https://img.shields.io/npm/dw/vue-ele-upload-video.svg)](https://npmcharts.com/compare/vue-ele-upload-video?minimal=true)
 
-## 介绍
+## Introduction
 
-vue-ele-upload-video 对 element-ui 中 upload 组件进一步封装，使得视频上传更加容易
+Vue-ele-upload-video further encapsulates the upload component in element-ui, making video uploading easier
 
-## 效果图
 
-![效果图](./public/example.gif)
+## Rendering
 
-## 在线示例
+![Rendering](./public/example.gif)
+
+## Online example
 
 [https://codepen.io/dream2023/pen/ZNVvBg/](https://codepen.io/dream2023/pen/ZNVvBg/)
 
-## 安装
+## installation
 
 ```bash
 npm install vue-ele-upload-video --save
 ```
 
-## 使用
+## use
 
 ```js
-// 全局引入
+// Global introduction
 import EleUploadVideo from 'vue-ele-upload-video'
 Vue.component(EleUploadVideo.name, EleUploadVideo)
 ```
 
 ```js
-// 局部引入
+// Local introduction
 import EleUploadVideo from 'vue-ele-upload-video'
 export default {
   components: {
@@ -41,7 +42,7 @@ export default {
 }
 ```
 
-## 示例(上传到七牛云)
+## Example (uploaded to Qi Niuyun)
 
 ```html
 <template>
@@ -62,7 +63,7 @@ export default {
   export default {
     data() {
       return {
-        // 上传时需要携带后台请求的token
+        // Need to carry a background request when uploading token
         token: 'xxxx',
         video: ''
       }
@@ -79,67 +80,67 @@ export default {
 </script>
 ```
 
-## Props 参数
+## Props parameter
 
 ```js
-props: {
-  // 值
-  value: {
-    type: String
+Props: {
+  // value
+  Value: {
+    Type: String
   },
-  // 上传地址
-  action: {
-    type: String,
-    required: true
+  // Upload address
+  Action: {
+    Type: String,
+    Required: true
   },
-  // 响应处理函数
+  // response handler
   responseFn: Function,
-  // 文件大小限制(Mb)
+  // file size limit (Mb)
   fileSize: {
-    type: Number
+    Type: Number
   },
-  // 显示宽度(px)
-  width: {
-    type: Number,
-    default: 360
+  // display width (px)
+  Width: {
+    Type: Number,
+    Default: 360
   },
-  // 显示高度(默认auto)
-  height: {
-    type: Number
+  // display height (default auto)
+  Height: {
+    Type: Number
   },
-  // 是否显示提示
+  // Is the prompt displayed?
   isShowTip: {
-    type: Boolean,
-    default: true
+    Type: Boolean,
+    Default: true
   },
-  // 文件类型
+  // file type
   fileType: {
-    type: Array
+    Type: Array
   },
-    // 设置上传的请求头部(同官网)
-  headers: Object,
-  // 支持发送 cookie 凭证信息 (同官网)
+    / / Set the request header for uploading (same official website)
+  Headers: Object,
+  / / Support to send cookie credential information (same official website)
   withCredentials: {
-    type: Boolean,
-    default: false
+    Type: Boolean,
+    Default: false
   },
-  // 上传时附带的额外参数(同官网)
-  data: {
-    type: Object
+  // Additional parameters attached when uploading (same official website)
+  Data: {
+    Type: Object
   },
-  // 上传的文件字段名 (同官网)
-  name: {
-    type: String,
-    default: 'file'
+  // Uploaded file field name (same official website)
+  Name: {
+    Type: String,
+    Default: 'file'
   },
-    // 覆盖默认的上传行为，可以自定义上传的实现 (同官网)
+    / / Override the default upload behavior, you can customize the implementation of the upload (same official website)
   httpRequest: Function,
-  // 接受上传的文件类型（thumbnail-mode 模式下此参数无效）(同官网)
-  accept: String
+  // Accept the uploaded file type (this parameter is invalid in thumbnail-mode mode) (same official website)
+  Accept: String
 }
 ```
 
 ## 参考链接
 
-- [element-ui upload 组件](https://element.eleme.cn/#/zh-CN/component/upload)
-- [element-ui progress 组件](https://element.eleme.cn/#/zh-CN/component/progress)
+- [element-ui upload Component](https://element.eleme.cn/#/zh-CN/component/upload)
+- [element-ui progress Component](https://element.eleme.cn/#/zh-CN/component/progress)

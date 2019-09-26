@@ -1,6 +1,6 @@
 {
   "name": "vue-ele-upload-video",
-  "description": "vue-ele-upload-video 对 element-ui 中 upload 组件进一步封装，使得视频上传更加容易",
+  "description": "Vue-ele-upload-video further encapsulates the upload component in element-ui, making video uploading easier",
   "version": "2.0.5",
   "private": false,
   "scripts": {

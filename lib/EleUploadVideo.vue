@@ -1,6 +1,6 @@
 <template>
   <div class="ele-upload-video">
-    <!-- 上传组件 -->
+    <!-- Upload component -->
     <el-upload
       :accept="accept"
       :action="action"
@@ -18,7 +18,7 @@
       drag
       v-if="!value"
     >
-      <!-- 上传进度 -->
+      <!-- Upload progress -->
       <el-progress
         :percentage="videoUploadPercent"
         style="margin-top: 20px;"
@@ -26,37 +26,37 @@
         v-if="videoUploadPercent > 0"
       />
 
-      <!-- 上传提示 -->
+      <!-- Upload prompt -->
       <template v-else>
         <i class="el-icon-upload"></i>
         <div class="el-upload__text">
-          将视频拖到此处，或
-          <em>点击上传</em>
+          Drag the video here, or
+          <em>Click to upload</em>
         </div>
         <div
           class="el-upload__tip"
           slot="tip"
           v-if="showTip"
         >
-          请上传
+          Please upload
           <span
             style="color: #F56C6C"
-          >&nbsp;{{this.fileType ? this.fileType.join('/') : '视频'}}&nbsp;</span>格式文件
+          >&nbsp;{{this.fileType ? this.fileType.join('/') : 'video'}}&nbsp;</span>Format file
           <template v-if="fileSize">
-            ，且文件大小不超过
+            ，And the file size does not exceed
             <span style="color: #F56C6C">{{fileSize}}</span>&nbsp;MB
           </template>
         </div>
       </template>
     </el-upload>
 
-    <!-- 视频缩略 -->
+    <!-- Video thumbnail -->
     <vue-hover-mask v-if="value">
       <video
         :autoplay="false"
         :src="value"
         :style="{width: width + 'px', height: height ? height + 'px' : 'auto'}"
-      >您的浏览器不支持视频播放</video>
+      >Your browser does not support video playback</video>
       <template v-slot:action>
         <span
           @click="handlePlayerVideo"
@@ -73,7 +73,7 @@
       </template>
     </vue-hover-mask>
 
-    <!-- 弹窗播放 -->
+    <!-- Popup play -->
     <el-dialog
       :visible.sync="isShowVideo"
       append-to-body
@@ -84,7 +84,7 @@
         controls="controls"
         style="width: 100%"
         v-if="isShowVideo"
-      >您的浏览器不支持视频播放</video>
+      >Your browser does not support video playback</video>
     </el-dialog>
   </div>
 </template>
@@ -98,58 +98,58 @@ export default {
     VueHoverMask
   },
   props: {
-    // 值
+    // value
     value: {
       type: String
     },
-    // 上传地址
+    // Upload address
     action: {
       type: String,
       required: true
     },
-    // 响应处理函数
+    // response handler
     responseFn: Function,
-    // 文件大小限制(Mb)
+    // file size limit (Mb)
     fileSize: {
       type: Number
     },
-    // 显示宽度(px)
+    // display width (px)
     width: {
       type: Number,
       default: 360
     },
-    // 显示高度(默认auto)
+    // display height (default auto)
     height: {
       type: Number
     },
-    // 是否显示提示
+    // Is the prompt displayed?
     isShowTip: {
       type: Boolean,
       default: true
     },
-    // 文件类型
+    // file type
     fileType: {
       type: Array
     },
-     // 设置上传的请求头部(同官网)
+     // Set the request header for uploading (same official website)
     headers: Object,
-    // 支持发送 cookie 凭证信息 (同官网)
+    // Support to send cookie credential information (same official website)
     withCredentials: {
       type: Boolean,
       default: false
     },
-    // 上传时附带的额外参数(同官网)
+    // Additional parameters attached when uploading (same official website)
     data: {
       type: Object
     },
-    // 上传的文件字段名 (同官网)
+    // Uploaded file field name (same official website)
     name: {
       type: String,
       default: 'file'
     },
-      // 覆盖默认的上传行为，可以自定义上传的实现 (同官网)
+      // Override the default upload behavior, you can customize the implementation of the upload (same official website)
     httpRequest: Function,
-    // 接受上传的文件类型（thumbnail-mode 模式下此参数无效）(同官网)
+    // Accept the uploaded file type (this parameter is invalid in thumbnail-mode mode) (same official website)
     accept: String
   },
   data () {
@@ -159,15 +159,15 @@ export default {
     }
   },
   computed: {
-    // 是否显示提示
+    // Is the prompt displayed?
     showTip() {
       return this.isShowTip && (this.fileType || this.fileSize)
     }
   },
   methods: {
-    // 上传大小和格式检测
+    // upload size and format detection
     handleBeforeUploadVideo (file) {
-      // 校检格式
+      // proofreading
       let isVideo = false
       if (Array.isArray(this.fileType)) {
         const type = file.type.split('/')
@@ -177,30 +177,30 @@ export default {
       }
 
       if (!isVideo) {
-        this.$message.error(`${file.name}格式不正确, 请上传格式正确的视频`)
+        this.$message.error(`${file.name}is not in the correct format, please upload the correct format video`)
         return false
       }
 
-      // 校检文件大小
+      // Check the file size
       if (this.fileSize) {
         const isLt = file.size / 1024 / 1024 < this.fileSize
         if (!isLt) {
-          this.$message.error(`上传视频大小不能超过${this.fileSize}MB哦!`)
+          this.$message.error(`Upload video size cannot exceed {this.fileSize}MB!`)
           return false
         }
       }
       return true
     },
 
-    // 上传进度
+    // upload progress
     handleUploadProcess (event, file) {
       this.videoUploadPercent = Number(file.percentage.toFixed(0))
     },
 
-    // 上传成功
+    // Uploaded successfully
     handleUploadSuccess (response, file) {
       this.videoUploadPercent = 0
-      this.$message.success('上传成功!')
+      this.$message.success('Upload succeeded!')
       if (this.responseFn) {
         this.$emit('input', this.responseFn(response, file))
       } else {
@@ -208,20 +208,20 @@ export default {
       }
     },
 
-    // 上传失败
+    // upload failed
     handleUploadError (err, file, fileList) {
-      this.$message.error('上传失败, 请重试!')
+      this.$message.error('Upload failed, please try again!')
       this.videoUploadPercent = 0
       this.$emit('error', err, file, fileList)
     },
 
-    // 删除视频
+    // delete the video
     handleDeleteVideo () {
       this.$emit('delete')
       this.$emit('input', null)
     },
 
-    // 播放视频
+    // play the video
     handlePlayerVideo () {
       this.isShowVideo = true
     }
