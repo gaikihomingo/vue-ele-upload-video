@@ -23,7 +23,13 @@
     "element-ui video"
   ],
   "dependencies": {
-    "vue-hover-mask": "^1.0.0"
+    "vue-hover-mask": "^1.0.0",
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-service": "^3.8.0",
+    "core-js": "^2.6.5",
+    "element-ui": "^2.9.1",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
